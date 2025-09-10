@@ -1,0 +1,41 @@
+name: Update Stats
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # runs every day
+  workflow_dispatch: # allow manual run
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run script
+        env:
+          GITHUB_USERNAME: ${{ github.repository_owner }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python generate_stats.py
+
+      - name: Update README
+        run: |
+          sed -i '/## 📊 Language Stats/,$d' README.md
+          cat LANG_STATS.md >> README.md
+          rm LANG_STATS.md
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add README.md
+          git commit -m "Update language stats" || echo "No changes to commit"
+          git push
