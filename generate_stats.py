@@ -43,6 +43,8 @@ def main():
     with open("LANG_STATS.md", "w", encoding="utf-8") as f:
         f.writelines(lines)
 
-if __name__ == "__main__":
-    main()
+# Toggle flag
+RUN_SCRIPT = False  # set to True when you want it active
 
+if __name__ == "__main__" and RUN_SCRIPT:
+    main()
