@@ -1,10 +1,13 @@
 ## 📊 Language Stats
-| Language | % |
-|----------|---|
-| C# | 61.98% |
-| Python | 16.67% |
-| HTML | 11.25% |
-| MATLAB | 6.95% |
-| CSS | 2.13% |
-| TSQL | 0.55% |
-| JavaScript | 0.47% |
+
+| Language | Percentage |
+|----------|------------|
+| C# | 77.33% |
+| PowerShell | 9.70% |
+| Python | 4.87% |
+| HTML | 3.27% |
+| MATLAB | 2.02% |
+| Batchfile | 1.88% |
+| CSS | 0.62% |
+| TSQL | 0.16% |
+| JavaScript | 0.14% |
